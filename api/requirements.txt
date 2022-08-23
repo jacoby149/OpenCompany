@@ -10,3 +10,7 @@ passlib
 pymongo
 pymongo[srv]
 stripe
+starlette
+authlib
+itsdangerous
+httpx
