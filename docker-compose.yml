@@ -14,18 +14,20 @@ services:
       default:
         aliases:
           - api.localhost
-  # auth:
-  #   build: auth
-  #   volumes:
-  #     - ./auth:/frontend
-  #     - node-modules:/frontend/node_modules
-  #   command: ["npm", "run", "start"]
-  #   environment:
-  #     PORT: 80
-  #     VIRTUAL_HOST: auth.localhost
-  #     CHOKIDAR_USEPOLLING: "true"
-  #   ports:
-  #     - '3000:80'
+  ui:
+    build: ui
+    volumes:
+      - ./ui:/ui
+      - ui-node-modules:/ui/node_modules
+    command: ["npm", "run", "start"]
+    environment:
+      NODE_ENV: development
+      PORT: 80
+      VIRTUAL_HOST: ui.localhost
+      CHOKIDAR_USEPOLLING: "true"
+      WATCHPACK_POLLING: "true"
+    ports:
+      - '3000:80'
   nginx-proxy:
     image: jwilder/nginx-proxy
     ports:
@@ -34,4 +36,4 @@ services:
       - /var/run/docker.sock:/tmp/docker.sock:ro
 
 volumes:
-  network-ui-node-modules:
+  ui-node-modules:

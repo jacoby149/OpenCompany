@@ -1,4 +1,4 @@
-# import app.settings as settings
+import app.settings as settings
 # import app.docs as docs
 # import app.models as models
 # import app.exceptions as exceptions
@@ -18,6 +18,9 @@ from starlette.requests import Request
 from starlette.middleware.sessions import SessionMiddleware
 from starlette.responses import HTMLResponse, RedirectResponse
 from authlib.integrations.starlette_client import OAuth, OAuthError
+import requests
+
+
 
 app = FastAPI()
 app.add_middleware(SessionMiddleware, secret_key="!secret")
@@ -25,46 +28,44 @@ app.add_middleware(SessionMiddleware, secret_key="!secret")
 config = Config('.env')
 oauth = OAuth(config)
 
-CONF_URL = 'https://accounts.google.com/.well-known/openid-configuration'
-oauth.register(
-    name='google',
-    server_metadata_url=CONF_URL,
-    client_kwargs={
-        'scope': 'openid email profile'
+@app.get('/mono')
+async def homepage(request: Request,code:str=None):
+    token = request.session.get('token')
+
+    # log in
+    if not token and not code:
+        url = f'https://github.com/login/oauth/authorize?client_id={settings.client_id}'
+        return HTMLResponse(f'<a href="{url}">login</a>')
+
+    # put token in
+    if not token and code:
+        request.session['token'] = get_token(code)
+        token = request.session.get('token')
+
+    user = api_call(token,"https://api.github.com/user")
+    user_info = ""
+    for k,v in user.items():
+        user_info = user_info + f'{k}:{v}<br>'
+    return HTMLResponse(f'{user_info}<a href="/logout">logout</a>')
+
+def api_call(token, url):
+    headers={'Authorization': f'token {token}'}
+    return requests.get(url,headers=headers).json()
+
+def get_token(code):
+    url = 'https://github.com/login/oauth/access_token'
+    myobj = {
+        'client_id': settings.client_id,
+        'client_secret': settings.client_secret,
+        'code' : code,
+        'redirect_uri' : "http://api.localhost/"
     }
-)
+    x = requests.post(url, json = myobj)
+    return (x.text.split("&")[0].split("=")[1])
 
-
-@app.get('/')
-async def homepage(request: Request):
-    user = request.session.get('user')
-    if user:
-        data = json.dumps(user)
-        html = (
-            f'<pre>{data}</pre>'
-            '<a href="/logout">logout</a>'
-        )
-        return HTMLResponse(html)
-    return HTMLResponse('<a href="/login">login</a>')
-
-
-@app.get('/login')
-async def login(request: Request):
-    redirect_uri = request.url_for('auth')
-    return await oauth.google.authorize_redirect(request, redirect_uri)
-
-
-@app.get('/auth')
-async def auth(request: Request):
-    try:
-        token = await oauth.google.authorize_access_token(request)
-    except OAuthError as error:
-        return HTMLResponse(f'<h1>{error.error}</h1>')
-    user = token.get('userinfo')
-    if user:
-        request.session['user'] = dict(user)
-    return RedirectResponse(url='/')
-
+def get_user_info():
+    # https://api.github.com/user
+    pass
 
 @app.get('/logout')
 async def logout(request: Request):
