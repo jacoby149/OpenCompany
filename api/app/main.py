@@ -16,6 +16,7 @@ from fastapi import FastAPI
 from starlette.config import Config
 from starlette.requests import Request
 from starlette.middleware.sessions import SessionMiddleware
+from fastapi.middleware.cors import CORSMiddleware
 from starlette.responses import HTMLResponse, RedirectResponse
 from authlib.integrations.starlette_client import OAuth, OAuthError
 import requests
@@ -24,54 +25,42 @@ import requests
 
 app = FastAPI()
 app.add_middleware(SessionMiddleware, secret_key="!secret")
+app.add_middleware(
+    CORSMiddleware,
+    allow_credentials=True,
+    allow_origins=["*"],
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 config = Config('.env')
 oauth = OAuth(config)
 
-@app.get('/mono')
-async def homepage(request: Request,code:str=None):
-    token = request.session.get('token')
+@app.get('/login_url')
+async def login_url():
+    return f'https://github.com/login/oauth/authorize?client_id={settings.client_id}'
 
-    # log in
-    if not token and not code:
-        url = f'https://github.com/login/oauth/authorize?client_id={settings.client_id}'
-        return HTMLResponse(f'<a href="{url}">login</a>')
+@app.get('/user_info')
+def get_user_info(token:str):
+    return get(token,"https://api.github.com/user")
 
-    # put token in
-    if not token and code:
-        request.session['token'] = get_token(code)
-        token = request.session.get('token')
-
-    user = api_call(token,"https://api.github.com/user")
-    user_info = ""
-    for k,v in user.items():
-        user_info = user_info + f'{k}:{v}<br>'
-    return HTMLResponse(f'{user_info}<a href="/logout">logout</a>')
-
-def api_call(token, url):
-    headers={'Authorization': f'token {token}'}
-    return requests.get(url,headers=headers).json()
-
-def get_token(code):
+@app.get('/get_token')
+def code_for_token(code:str):
     url = 'https://github.com/login/oauth/access_token'
+    print("CODE : ",code)
     myobj = {
         'client_id': settings.client_id,
         'client_secret': settings.client_secret,
         'code' : code,
-        'redirect_uri' : "http://api.localhost/"
+        'redirect_uri' : "http://ui.localhost/"
     }
-    x = requests.post(url, json = myobj)
-    return (x.text.split("&")[0].split("=")[1])
+    tok = requests.post(url, json = myobj)
+    tok = (tok.text.split("&")[0].split("=")[1])
+    return tok
 
-def get_user_info():
-    # https://api.github.com/user
-    pass
-
-@app.get('/logout')
-async def logout(request: Request):
-    request.session.pop('user', None)
-    return RedirectResponse(url='/')
-
+def get(token, url):
+    headers={'Authorization': f'token {token}'}
+    return requests.get(url,headers=headers).json()
 
 if __name__ == '__main__':
     import uvicorn
