@@ -4,3 +4,4 @@ api/app/__pycache__/__init__.cpython-39.pyc
 api/app/__pycache__/main.cpython-39.pyc
 api/app/__pycache__/settings.cpython-39.pyc
 ui/package-lock.json
+api/app/settings.py

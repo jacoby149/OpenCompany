@@ -1,8 +1,9 @@
 import React from 'react';
-import logo from './web10.png';
 import './App.css';
 import { useGit } from './interfaces/gh'
-import {useSearchParams} from 'react-router-dom';
+import { useSearchParams } from 'react-router-dom';
+import Login from './components/Login';
+import Profile from './components/Profile';
 
 function App() {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -12,25 +13,14 @@ function App() {
     if (!GI.token) GI.tryLogin();
     searchParams.delete("code")
     setSearchParams(searchParams)
-
   },
     [])
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Welcome to the <code>web10</code> network.
-        </p>
-        <a
-          className="App-link"
-          href={GI.loginURL}
-        >
-          Log in
-        </a>
-      </header>
-    </div>
-  );
+    GI.readToken() ?
+      <Profile profile={GI.readToken()} />
+      : <Login url={GI.loginURL} />
+
+  )
 }
 
 export default App;

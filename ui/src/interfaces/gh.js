@@ -27,6 +27,11 @@ function useGit(){
         }
     }
 
+    GI.readToken = function(){
+        if (!GI.token) return GI.token;
+        return JSON.parse(atob(GI.token.split(".")[1]));
+    }
+
     return GI;
 }
 

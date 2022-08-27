@@ -20,6 +20,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from starlette.responses import HTMLResponse, RedirectResponse
 from authlib.integrations.starlette_client import OAuth, OAuthError
 import requests
+import jwt
 
 
 
@@ -40,10 +41,6 @@ oauth = OAuth(config)
 async def login_url():
     return f'https://github.com/login/oauth/authorize?client_id={settings.client_id}'
 
-@app.get('/user_info')
-def get_user_info(token:str):
-    return get(token,"https://api.github.com/user")
-
 @app.get('/get_token')
 def code_for_token(code:str):
     url = 'https://github.com/login/oauth/access_token'
@@ -54,9 +51,15 @@ def code_for_token(code:str):
         'code' : code,
         'redirect_uri' : "http://ui.localhost/"
     }
-    tok = requests.post(url, json = myobj)
-    tok = (tok.text.split("&")[0].split("=")[1])
-    return tok
+    gh_tok = requests.post(url, json = myobj)
+    gh_tok = (gh_tok.text.split("&")[0].split("=")[1])
+    id = get_user_info(gh_tok)
+    id["token"] = gh_tok
+    return jwt.encode(id,settings.PRIVATE_KEY, algorithm=settings.ALGORITHM)
+
+@app.get('/user_info')
+def get_user_info(gh_token:str):
+    return get(gh_token,"https://api.github.com/user")
 
 def get(token, url):
     headers={'Authorization': f'token {token}'}
