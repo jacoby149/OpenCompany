@@ -2,6 +2,15 @@
   text-align: center;
 }
 
+code{
+  background-color: #282c34;
+  color:rgb(227, 171, 114);
+}
+
+a:hover {
+  color:blueviolet;
+}
+
 .App-logo {
   height: 20vmin;
   pointer-events: none;

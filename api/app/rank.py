@@ -14,7 +14,7 @@ ranks = [
             "Depending on others, but making meaningful improvements to the web10 network \
                 and teaching people at the assistant level for mentor bonuses!",
         "price":400,
-        "min_commits":20,
+        "min_commits":5,
         "mentor_profit_share":.40,
     },
     {
@@ -23,7 +23,7 @@ ranks = [
             "An independent programmer with practiced mentorship skills, \
                 developing their system design capabilities",
         "price":1400,
-        "min_commits":50,
+        "min_commits":10,
         "mentor_profit_share":.50,
     },
     {
@@ -32,7 +32,7 @@ ranks = [
             "A high caliber programmer with strong system design capabillities, \
                 capable of leveraging human capital in the network to do things bigger than themselves.",
         "price":1900,
-        "min_commits":100,
+        "min_commits":20,
         "mentor_profit_share":.60,
     },
     {
@@ -41,7 +41,7 @@ ranks = [
             "A thought leader in the network, making an influence in the network beyond code. \
                 Educating, managing, and connecting others in the network.",
         "price":2900,
-        "min_commits":200,
+        "min_commits":50,
         "mentor_profit_share":.80,
     },
 ]

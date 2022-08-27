@@ -26,15 +26,15 @@ function UserInfo({ profile, I, setMode }) {
                     Log Out
                 </a>                <img src={logo} className="App-logo" alt="logo" />
                 <p>
-                    Welcome <code>{profile["login"]}</code>.
+                    Welcome <code>{profile["login"]}</code>
                     <br></br>
                     Rank : <code>{"assistant"}</code>
                 </p>
-                <img src={profile["avatar_url"]} width={"64px"}></img>
+                <img style={{margin:"20px"}} src={profile["avatar_url"]} width={"64px"}></img>
                 <p>
                     Merged Commits : 12
                     <br></br>
-                    Commits Until Promotion : 10</p>
+                    Commits Necessary : 10</p>
                 <a
                     className="App-link"
                     onClick={() => setMode("promotion")}
@@ -42,7 +42,7 @@ function UserInfo({ profile, I, setMode }) {
                     Eligible for Promotion!
                 </a>
                 <a href={""} style={{ margin: "20px" }} className="App-link">
-                    <img height={"16px"} src={discord}></img>
+                    <img width={"160px"} src={discord}></img>
                 </a>
 
             </header>
@@ -66,13 +66,14 @@ function PromoInfo({ profile, I, setMode }) {
                 <p>
                     Current Rank : <code>{"assistant"}</code>
                     <br></br>
-                    Rank After Promotion : <code>{"intern"}</code>.
+                    Rank After Promotion : <code>{"intern"}</code>
                     <br></br><br></br>
-                    github handle of your mentor :<br></br>
-                    <input style={{ backgroundColor: "black", color: "orange" }}></input>
-                    <br></br><br></br>
-                    <button style={{marginTop:"10px",marginBottom:"5px"}}>Get Promoted By</button><br></br> @jacoby149 <img src={profile["avatar_url"]} width={"16px"}></img>
+                    Enter the GH of your mentor :<br></br>
+                    <input className="input" type="text" style={{ margin:"5px",backgroundColor: "black", color: "orange" }}></input>
+                    <p class="help is-success">This is a valid mentor above your rank : @jacoby149 <img src={profile["avatar_url"]} width={"12px"}></img></p>
+                    <button className="button is-primary is-light" style={{marginTop:"10px",marginBottom:"5px"}}>Get Promoted</button>
                 </p>
+                <br></br>
                 <a
                     className="App-link"
                     onClick={() => setMode("user")}

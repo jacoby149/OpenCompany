@@ -1,4 +1,5 @@
 count people's commits.
-make promotion UI.
 make promotion button work [no pay]
+make a config to turn pay on for promotion
 make discord bot
+implement star & fork requirement

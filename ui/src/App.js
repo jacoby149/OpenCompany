@@ -1,4 +1,5 @@
 import React from 'react';
+import './bulma/css/bulma.min.css';
 import './App.css';
 import { useGit } from './interfaces/gh'
 import { useSearchParams } from 'react-router-dom';

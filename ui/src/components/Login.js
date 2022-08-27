@@ -1,7 +1,7 @@
 import React from 'react';
 import logo from '../web10.png';
 
-function Login({url}) {
+function Login({ url }) {
     return (
         <div className="App">
             <header className="App-header">
