@@ -27,6 +27,10 @@ function useGit(){
         }
     }
 
+    GI.logOut = function(){
+        GI.setToken(null);
+    }
+
     GI.readToken = function(){
         if (!GI.token) return GI.token;
         return JSON.parse(atob(GI.token.split(".")[1]));

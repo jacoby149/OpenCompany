@@ -17,7 +17,7 @@ function App() {
     [])
   return (
     GI.readToken() ?
-      <Profile profile={GI.readToken()} />
+      <Profile profile={GI.readToken()} I={GI} />
       : <Login url={GI.loginURL} />
 
   )

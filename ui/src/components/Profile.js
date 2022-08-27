@@ -1,11 +1,20 @@
 import React from 'react';
+import { useGit } from '../interfaces/gh';
 import logo from '../web10.png';
 
-function Profile({profile}) {
+function Profile({ profile,I}) {
     return (
         <div className="App">
             <header className="App-header">
-                <img src={logo} className="App-logo" alt="logo" />
+                <a
+                    className="App-link"
+
+                    style={{ top: "5px", right: "5px", position: "absolute"}}
+                    href={""}
+                    onClick={I.logOut}
+                >
+                    Log Out
+                </a>                <img src={logo} className="App-logo" alt="logo" />
                 <p>
                     Welcome {profile["login"]} to the <code>web10</code> network.
                 </p>
