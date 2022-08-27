@@ -1,8 +1,4 @@
-get acct info + gh token in an encoded JWT [don't just pass the raw gh token]
-create the promotion structure in a python file
-make the promotion UI
-allow referrals to 
-per user, save the : 
-    promotion rank.
-    referees per rank.
-allow users to enter billing info for affiliate capability
+count people's commits.
+make promotion UI.
+make promotion button work [no pay]
+make discord bot
