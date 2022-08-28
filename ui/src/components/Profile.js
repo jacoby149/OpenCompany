@@ -26,7 +26,11 @@ function UserInfo({ profile, I, setMode }) {
     return (
         <div className="App">
             <header className="App-header">
-                <a href={"https://github.com/jacoby149/web10"}>
+                <a
+                    href={"https://github.com/jacoby149/web10"}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
                     <img src={logo} className="App-logo" alt="logo" />
                 </a>
                 <p>
@@ -64,7 +68,11 @@ function PromoInfo({ profile, I, setMode }) {
     return (
         <div className="App">
             <header className="App-header">
-                <a href={"https://github.com/jacoby149/web10"}>
+                <a
+                    href={"https://github.com/jacoby149/web10"}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
                     <img src={logo} className="App-logo" alt="logo" />
                 </a>
                 <div>
