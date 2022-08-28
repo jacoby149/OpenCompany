@@ -36,13 +36,13 @@ function UserInfo({ profile, I, setMode }) {
                 <p>
                     Welcome <code>{profile["login"]}</code>
                     <br></br>
-                    Rank : <code>{"assistant"}</code>
+                    Rank : <code>{I.ranks[profile["rank"]]["name"]}</code>
                 </p>
                 <img style={{ margin: "20px" }} src={profile["avatar_url"]} width={"64px"}></img>
                 <p>
                     Merged Commits : 12
                     <br></br>
-                    Commits Necessary : 10</p>
+                    Commits Necessary : {I.neededCommits()}</p>
                 <a
                     className="App-link"
                     onClick={() => setMode("promotion")}
@@ -76,14 +76,14 @@ function PromoInfo({ profile, I, setMode }) {
                     <img src={logo} className="App-logo" alt="logo" />
                 </a>
                 <div>
-                    Current Rank : <code>{"assistant"}</code>
+                    Current Rank :<code>{I.ranks[profile["rank"]]["name"]}</code>
                     <br></br>
-                    Rank After Promotion : <code>{"intern"}</code>
+                    Promotion Rank :<code>{I.ranks[profile["rank"]+1]["name"]}</code>
                     <br></br><br></br>
                     Enter the GH of your mentor :<br></br>
                     <input className="input" type="text" style={{ margin: "5px", backgroundColor: "black", color: "orange" }}></input>
                     <p className="help is-success">This is a valid mentor above your rank : @jacoby149 <img src={profile["avatar_url"]} width={"12px"}></img></p>
-                    <button className="button is-light" style={{ marginTop: "10px", marginBottom: "5px" }}>Get Promoted</button>
+                    <button className="button is-light" style={{ marginTop: "10px", marginBottom: "5px" }} disabled>Get Promoted</button>
                 </div>
                 <a style={{ margin: "10px" }}
                     className="App-link"

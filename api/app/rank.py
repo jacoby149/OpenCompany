@@ -49,4 +49,8 @@ ranks = [
         "min_commits":50,
         "mentor_profit_share":.85,
     },
+    {   
+        "name":"maximum-rank-achieved",
+        "min_commits":"max"
+    }
 ]

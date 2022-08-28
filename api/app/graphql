@@ -1,0 +1,21 @@
+{
+  viewer {
+    login
+  }
+  repository(name: "web10", owner: "jacoby149") {
+    pullRequests() {
+      edges {
+        node {
+          id
+          author {
+            login
+          }
+          merged
+          commits {
+            totalCount
+          }
+        }
+      }
+    }
+  }
+}

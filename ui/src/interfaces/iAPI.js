@@ -43,6 +43,10 @@ function useAPI() {
         return JSON.parse(atob(AI.token.split(".")[1]));
     }
 
+    AI.neededCommits = function(){
+        return AI.ranks[AI.readToken()["rank"]+1]["min_commits"];
+    }
+
     return AI;
 }
 
