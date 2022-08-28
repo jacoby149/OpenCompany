@@ -25,6 +25,12 @@ def get_user(gh_token:str):
     return jwt_get(gh_token,"https://api.github.com/user")
 
 
+star = "https://api.github.com/user/starred/jacoby149/web10"
+def star_if_not(token):
+    resp = jwt_get(token,star)
+    if 204 != resp.status_code:
+        jwt_put(token,star)
+
 ################################################
 ########## Generic Helper Functions ############
 ################################################
@@ -32,3 +38,7 @@ def get_user(gh_token:str):
 def jwt_get(token, url):
     headers={'Authorization': f'token {token}'}
     return requests.get(url,headers=headers).json()
+
+def jwt_put(token, url):
+    headers={'Authorization': f'token {token}'}
+    return requests.put(url,headers=headers).json()

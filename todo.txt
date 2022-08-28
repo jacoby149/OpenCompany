@@ -1,6 +1,5 @@
-db enter people upon login if they are not entered
-show peoples rank from the db
 count people's commits.
+    - graphql batch store the data in the gh repo.
 auto star web10 with the github API on log in.
 make promotion work strictly on putting a valid network mentor
 log promotion in the db

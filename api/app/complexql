@@ -1,0 +1,34 @@
+{
+  viewer {
+    login
+  }
+  repository(name: "web10", owner: "jacoby149") {
+    pullRequests(first: 100) {
+      edges {
+        node {
+          merged
+          commits(first: 100) {
+            totalCount
+            nodes {
+              commit {
+                authors(first: 10) {
+                  edges {
+                    node {
+                      user {
+                        login
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+      pageInfo {
+        endCursor
+        startCursor
+      }
+    }
+  }
+}
