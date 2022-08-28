@@ -1,20 +1,10 @@
 count people's commits.
-    - https://github.com/jacoby149/web10/commits/dev?author=AlexShevchenko9999
-    - https://docs.github.com/en/rest/commits/commits
-    - doesn't address getting the total...
-    - graphql could get the total.
-    - OR do it with a legit git command by pulling branches manually
-    - https://git-scm.com/docs/git-shortlog
-    - git shortlog -sn --all
-    - hmm gravatar! do it by email association, fuck it if email is changed.
-    - git shortlog -sn --group=author --group=trailer:co-authored-by --all -e
+    * git shortlog -sn --group=author --group=trailer:co-authored-by --all -e
         - make a docker volume in api with the web10 repo
-        - exec gh shortlog from fastapi, 
-        - grep it, and email match
+        - exec gitpull;git shortlog; from fastapi, 
+        - email match, and get the ground truth commit count.
 auto star web10 with the github API on log in.
 make promotion work strictly on putting a valid network mentor
 log promotion in the db
 make the promotion button work [no pay]
-
-
 make a config to turn pay on for promotion
