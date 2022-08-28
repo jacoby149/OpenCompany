@@ -5,7 +5,9 @@ function Login({ url }) {
     return (
         <div className="App">
             <header className="App-header">
-                <img src={logo} className="App-logo" alt="logo" />
+                <a href={"https://github.com/jacoby149/web10"}>
+                    <img src={logo} className="App-logo" alt="logo" />
+                </a>
                 <p>
                     Welcome to the <code>web10</code> network.
                 </p>

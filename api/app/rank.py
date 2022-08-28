@@ -1,47 +1,52 @@
 ranks = [
     {
-        "name":"Assistant",
+        "name":"out-of-network",
+        "description": 
+            "Join to learn by doing, and get the career benefits of the web10 network.",
+    },
+    {
+        "name":"assistant",
         "description": 
             "Supporter of web10, beginning to make \
                 code contributions and/or refer others!",
         "price":100,
         "min_commits":0,
-        "mentor_profit_share":.30,
+        "mentor_profit_share":.50,
     },
     {
-        "name":"Intern",
+        "name":"intern",
         "description": 
             "Depending on others, but making meaningful improvements to the web10 network \
                 and teaching people at the assistant level for mentor bonuses!",
         "price":400,
         "min_commits":5,
-        "mentor_profit_share":.40,
+        "mentor_profit_share":.55,
     },
     {
-        "name":"Software Engineer",
+        "name":"software engineer",
         "description": 
             "An independent programmer with practiced mentorship skills, \
                 developing their system design capabilities",
         "price":1400,
         "min_commits":10,
-        "mentor_profit_share":.50,
+        "mentor_profit_share":.60,
     },
     {
-        "name":"Software Engineer II",
+        "name":"software engineer II",
         "description": 
             "A high caliber programmer with strong system design capabillities, \
                 capable of leveraging human capital in the network to do things bigger than themselves.",
         "price":1900,
         "min_commits":20,
-        "mentor_profit_share":.60,
+        "mentor_profit_share":.70,
     },
     {
-        "name":"Core Contributor",
+        "name":"core contributor",
         "description": 
             "A thought leader in the network, making an influence in the network beyond code. \
                 Educating, managing, and connecting others in the network.",
         "price":2900,
         "min_commits":50,
-        "mentor_profit_share":.80,
+        "mentor_profit_share":.85,
     },
 ]

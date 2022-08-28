@@ -7,7 +7,7 @@ code{
   color:rgb(227, 171, 114);
 }
 
-a:hover {
+.App-link:hover {
   color:blueviolet;
 }
 

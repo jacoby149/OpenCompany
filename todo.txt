@@ -1,5 +1,7 @@
+BETA :
 count people's commits.
-make promotion button work [no pay]
+auto star web10 with the github API on log in [if not starred.]
+make the promotion button work [no pay]
+
+
 make a config to turn pay on for promotion
-make discord bot
-implement star & fork requirement
