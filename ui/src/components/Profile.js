@@ -67,16 +67,16 @@ function PromoInfo({ profile, I, setMode }) {
                 <a href={"https://github.com/jacoby149/web10"}>
                     <img src={logo} className="App-logo" alt="logo" />
                 </a>
-                <p>
+                <div>
                     Current Rank : <code>{"assistant"}</code>
                     <br></br>
                     Rank After Promotion : <code>{"intern"}</code>
                     <br></br><br></br>
                     Enter the GH of your mentor :<br></br>
                     <input className="input" type="text" style={{ margin: "5px", backgroundColor: "black", color: "orange" }}></input>
-                    <p class="help is-success">This is a valid mentor above your rank : @jacoby149 <img src={profile["avatar_url"]} width={"12px"}></img></p>
+                    <p className="help is-success">This is a valid mentor above your rank : @jacoby149 <img src={profile["avatar_url"]} width={"12px"}></img></p>
                     <button className="button is-light" style={{ marginTop: "10px", marginBottom: "5px" }}>Get Promoted</button>
-                </p>
+                </div>
                 <a style={{ margin: "10px" }}
                     className="App-link"
                     onClick={() => setMode("user")}

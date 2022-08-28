@@ -5,3 +5,4 @@ api/app/__pycache__/main.cpython-39.pyc
 api/app/__pycache__/settings.cpython-39.pyc
 ui/package-lock.json
 api/app/settings.py
+api/app/__pycache__/github.cpython-39.pyc

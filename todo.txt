@@ -1,6 +1,9 @@
-BETA :
+db enter people upon login if they are not entered
+show peoples rank from the db
 count people's commits.
-auto star web10 with the github API on log in [if not starred.]
+auto star web10 with the github API on log in.
+make promotion work strictly on putting a valid network mentor
+log promotion in the db
 make the promotion button work [no pay]
 
 
