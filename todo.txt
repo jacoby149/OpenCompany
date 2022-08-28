@@ -1,3 +1,4 @@
+make a [logging in ...] message
 save login with cookies
 db enter people upon login if they are not entered
 show peoples rank from the db

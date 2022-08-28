@@ -1,7 +1,7 @@
 import React from 'react';
 import logo from '../web10.png';
 
-function Login({ url }) {
+function Login({ I }) {
     return (
         <div className="App">
             <header className="App-header">
@@ -13,10 +13,12 @@ function Login({ url }) {
                 </p>
                 <a
                     className="App-link"
-                    href={url}
+                    href={I.loginURL}
                 >
                     Log in
                 </a>
+                <p className="help is-success">{I.message}</p>
+
             </header>
         </div>
     );

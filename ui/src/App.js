@@ -1,25 +1,25 @@
 import React from 'react';
 import './bulma/css/bulma.min.css';
 import './App.css';
-import { useGit } from './interfaces/gh'
+import { useAPI } from './interfaces/iAPI'
 import { useSearchParams } from 'react-router-dom';
 import Login from './components/Login';
 import Profile from './components/Profile';
 
 function App() {
   const [searchParams, setSearchParams] = useSearchParams();
-  const GI = useGit();
-  window.GI = GI;
+  const AI = useAPI();
+  window.AI = AI;
   React.useEffect(() => {
-    if (!GI.token) GI.tryLogin();
+    if (!AI.token) AI.tryLogin();
     searchParams.delete("code")
     setSearchParams(searchParams)
   },
     [])
   return (
-    GI.readToken() ?
-      <Profile profile={GI.readToken()} I={GI} />
-      : <Login url={GI.loginURL} />
+    AI.readToken() ?
+      <Profile profile={AI.readToken()} I={AI} />
+      : <Login I={AI} />
 
   )
 }

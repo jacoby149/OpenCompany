@@ -6,3 +6,7 @@ api/app/__pycache__/settings.cpython-39.pyc
 ui/package-lock.json
 api/app/settings.py
 api/app/__pycache__/github.cpython-39.pyc
+api/app/__pycache__/exceptions.cpython-39.pyc
+api/app/__pycache__/models.cpython-39.pyc
+api/app/__pycache__/mongo.cpython-39.pyc
+api/app/__pycache__/rank.cpython-39.pyc
