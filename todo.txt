@@ -1,5 +1,6 @@
 count people's commits.
     * git clone --bare ...
+    * git fetch --all
     * git shortlog -sn --group=author --group=trailer:co-authored-by --all -e
         - make a docker volume in api with the web10 repo
         - exec gitpull;git shortlog; from fastapi, 

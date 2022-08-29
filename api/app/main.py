@@ -42,6 +42,10 @@ def login(code:str):
     user["token"] = gh_tok
     return jwt.encode(user,settings.PRIVATE_KEY, algorithm=settings.ALGORITHM)
 
+@app.get('/contribution')
+def contribution():
+    return github.get_contributors()
+
 # gets the user, inits then gets user if user doesn't exist 
 def iget_user(gh_data):
     username = gh_data["login"]
