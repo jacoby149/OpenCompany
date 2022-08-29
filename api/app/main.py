@@ -42,7 +42,7 @@ def login(code:str):
     user["token"] = gh_tok
     return jwt.encode(user,settings.PRIVATE_KEY, algorithm=settings.ALGORITHM)
 
-@app.get('/contribution')
+@app.get('/contributors')
 def contribution():
     return github.get_contributors()
 

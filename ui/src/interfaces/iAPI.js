@@ -7,7 +7,8 @@ function useAPI() {
     [AI.loginURL, AI.setLoginURL] = React.useState(null);
     [AI.ranks, AI.setRanks] = React.useState(null);
     [AI.token, AI.setToken] = React.useState(null);
-    [AI.message, AI.setMessage] = React.useState("")
+    [AI.message, AI.setMessage] = React.useState("");
+    [AI.contributors, AI.setContributors] = React.useState({});
 
     React.useEffect(() => {
         fetch("http://api.localhost/login_url")
@@ -15,6 +16,9 @@ function useAPI() {
             );
         fetch("http://api.localhost/ranks")
             .then((r) => r.json().then(AI.setRanks)
+            );
+        fetch("http://api.localhost/contributors")
+            .then((r) => r.json().then(AI.setContributors)
             );
     }, []);
 
@@ -43,8 +47,8 @@ function useAPI() {
         return JSON.parse(atob(AI.token.split(".")[1]));
     }
 
-    AI.neededCommits = function(){
-        return AI.ranks[AI.readToken()["rank"]+1]["min_commits"];
+    AI.neededCommits = function () {
+        return AI.ranks[AI.readToken()["rank"] + 1]["min_commits"];
     }
 
     return AI;

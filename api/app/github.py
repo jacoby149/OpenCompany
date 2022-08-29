@@ -1,6 +1,7 @@
 import requests
 import app.settings as settings
 import os
+os.chdir("./app/web10.git")
 
 ###############################
 ###### Github API calls #######
@@ -44,13 +45,13 @@ def jwt_put(token, url):
     return requests.put(url,headers=headers).json()
 
 def get_contributors():
-    os.chdir("./app/web10.git")
     os.system("git fetch --all")
     out = os.popen("git shortlog -sn --group=author --group=trailer:co-authored-by --all -e").read()
-    out = out.split()
+    out = out.replace("\t","\n").split("\n")
     conts = {}
-    for i in range(0,len(out)-1,3):
+    for i in range(0,len(out)-1,2):
         print(i)
-        n,_,em = out[i],out[i+1],out[i+2]
-        conts[em[1:-1]] = n
+        n,id = out[i],out[i+1]
+        em = id.split("<")[1].split(">")[0]
+        conts[em] = int(n)
     return conts
