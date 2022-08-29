@@ -1,7 +1,13 @@
 import requests
 import app.settings as settings
 import os
-os.chdir("./app/web10.git")
+
+if not os.path.exists("./app/web10.git"):
+    os.chdir("./app")
+    os.system("git clone --bare https://github.com/jacoby149/web10.git")
+    os.chdir("./web10.git")
+else:
+    os.chdir("./app/web10.git")
 
 ###############################
 ###### Github API calls #######
