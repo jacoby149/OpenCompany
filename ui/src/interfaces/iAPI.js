@@ -51,6 +51,14 @@ function useAPI() {
         return AI.ranks[AI.readToken()["rank"] + 1]["min_commits"];
     }
 
+    AI.mergedCommits = function (email){
+        return email in AI.contributors ? AI.contributors[email] : 0;
+    }
+
+    AI.promoteable = function(email){
+        return AI.mergedCommits(email) >= AI.neededCommits()
+    }
+
     return AI;
 }
 

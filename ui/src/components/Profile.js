@@ -40,7 +40,7 @@ function UserInfo({ profile, I, setMode }) {
                 </p>
                 <img style={{ margin: "20px" }} src={profile["avatar_url"]} width={"64px"}></img>
                 <p>
-                    Merged Commits : {I.contributors[profile["email"]]}
+                    Merged Commits : {I.mergedCommits(profile["email"])}
                     <br></br>
                     Commits Necessary : {I.neededCommits()}</p>
                 <a

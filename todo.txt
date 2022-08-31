@@ -1,3 +1,7 @@
+make promotion work strictly on putting a valid network mentor
+make the promotion button work without mentor [no pay]
+make a config to turn pay on for promotion
+make a test repo
 count people's commits.
     * git clone --bare https://github.com/jacoby149/web10.git
     * git fetch --all
@@ -6,7 +10,4 @@ count people's commits.
         - exec gitpull;git shortlog; from fastapi, 
         - email match, and get the ground truth commit count.
 auto star web10 with the github API on log in.
-make promotion work strictly on putting a valid network mentor
 log promotion in the db
-make the promotion button work [no pay]
-make a config to turn pay on for promotion
