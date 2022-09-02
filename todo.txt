@@ -13,3 +13,8 @@ count people's commits.
         - email match, and get the ground truth commit count.
 auto star web10 with the github API on log in.
 log promotion in the db
+add a docs page that explains : 
+    promotions,
+    disclose, that the system requires you keep the following consistent:
+        - username
+        - email

@@ -37,6 +37,15 @@ def star_if_not(token):
     if 204 != resp.status_code:
         jwt_put(token,star)
 
+# hits our dbs first
+# if the person exists, hit github
+# TODO what about username changes ???
+# Ignore them.
+def get_mentor_candidate():
+    pass
+    #* /users/{username}
+
+
 ################################################
 ########## Generic Helper Functions ############
 ################################################
