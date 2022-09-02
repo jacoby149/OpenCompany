@@ -1,3 +1,5 @@
+make the mentor detection work using on github
+    * /users/{username}
 make promotion work strictly on putting a valid network mentor
 make the promotion button work without mentor [no pay]
 make a config to turn pay on for promotion
