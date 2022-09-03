@@ -1,5 +1,6 @@
 import React from 'react';
 import { useSearchParams } from 'react-router-dom';
+import axios from 'axios'
 
 function useAPI() {
     const AI = {};
