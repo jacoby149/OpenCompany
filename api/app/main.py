@@ -56,5 +56,9 @@ def iget_user(gh_data):
     del user['_id']
     return user
 
+@app.post('/mentor_candidate')
+def get_mentor_candidate(token:str,username:str):
+    return github.get_mentor_candidate(token,username)
+
 if __name__ == '__main__':
     uvicorn.run(app, host='127.0.0.1', port=8000)

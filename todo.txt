@@ -18,3 +18,5 @@ add a docs page that explains :
     disclose, that the system requires you keep the following consistent:
         - username
         - email
+make a system that lets you change username, looks at node id instead of username
+changing email is not feasible ...

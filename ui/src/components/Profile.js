@@ -65,6 +65,20 @@ function UserInfo({ profile, I, setMode }) {
 }
 
 function PromoInfo({ profile, I, setMode }) {
+    const fakeApi = () => console.log('Api is called')
+    const [inputValue, setInputValue] = React.useState('')
+    const [timer, setTimer] = React.useState(null)
+    const inputChanged = e => {
+        setInputValue(e.target.value)
+
+        clearTimeout(timer)
+
+        const newTimer = setTimeout(() => {
+            fakeApi()
+        }, 500)
+
+        setTimer(newTimer)
+    }
     return (
         <div className="App">
             <header className="App-header">
@@ -78,10 +92,17 @@ function PromoInfo({ profile, I, setMode }) {
                 <div>
                     Current Rank :<code>{I.ranks[profile["rank"]]["name"]}</code>
                     <br></br>
-                    Promotion Rank :<code>{I.ranks[profile["rank"]+1]["name"]}</code>
+                    Promotion Rank :<code>{I.ranks[profile["rank"] + 1]["name"]}</code>
                     <br></br><br></br>
                     Enter the GH of your mentor :<br></br>
-                    <input className="input" type="text" style={{ margin: "5px", backgroundColor: "black", color: "orange" }}></input>
+                    <input 
+                        className="input" 
+                        value={inputValue} 
+                        type="text" 
+                        onChange={inputChanged} 
+                        style={{ margin: "5px", backgroundColor: "black", color: "orange" }}
+                    >
+                    </input>
                     <p className="help is-success">This is a valid mentor above your rank : @jacoby149 <img src={profile["avatar_url"]} width={"12px"}></img></p>
                     <button className="button is-light" style={{ marginTop: "10px", marginBottom: "5px" }} disabled>Get Promoted</button>
                 </div>

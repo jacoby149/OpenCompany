@@ -41,9 +41,8 @@ def star_if_not(token):
 # if the person exists, hit github
 # TODO what about username changes ???
 # Ignore them.
-def get_mentor_candidate():
-    pass
-    #* /users/{username}
+def get_mentor_candidate(token,username):
+    return jwt_get(token,f'https://api.github.com/users/{username}')
 
 
 ################################################
