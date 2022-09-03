@@ -1,14 +1,22 @@
-make the mentor detection work
+ALPHA
 store node id also upon login to web10-network.
-use nodeid to identify mentees.
-make promotion work strictly on putting a valid network mentor
-make the promotion button work [no pay]
-make a config to turn pay on for promotion
-design for tracking multiple repositories.
+use nodeid to identify mentors.
+make promotion button enable based on putting a valid network mentor
+make the promotion button work [without pay]
 auto star web10 with the github API on log in.
+add the below things as future issues
+deploy the system and post about it!
+
+Privacy is still extremely important with code...
+Just happened to be that it wasn't feasible with web10.
+and web10 has a secret SSP future beholden to it.
+
+BETA
+design for tracking multiple repositories.
 log promotion rank, mentor, timestamp in the db
 add a information page that explains : 
     promotions,
     disclose, that the system requires you keep the following consistent:
         - email: changing email will alter up your contribution count.
             [ since git shortlogs work on emails ]
+make a config to turn pay on for promotion.
