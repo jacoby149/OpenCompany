@@ -1,22 +1,14 @@
-make the mentor detection work using on github
-    * /users/{username}
+make the mentor detection work
+store node id also upon login to web10-network.
+use nodeid to identify mentees.
 make promotion work strictly on putting a valid network mentor
-make the promotion button work without mentor [no pay]
+make the promotion button work [no pay]
 make a config to turn pay on for promotion
-make a test repo
-count people's commits.
-    * git clone --bare https://github.com/jacoby149/web10.git
-    * git fetch --all
-    * git shortlog -sn --group=author --group=trailer:co-authored-by --all -e
-        - make a docker volume in api with the web10 repo
-        - exec gitpull;git shortlog; from fastapi, 
-        - email match, and get the ground truth commit count.
+design for tracking multiple repositories.
 auto star web10 with the github API on log in.
-log promotion in the db
-add a docs page that explains : 
+log promotion rank, mentor, timestamp in the db
+add a information page that explains : 
     promotions,
     disclose, that the system requires you keep the following consistent:
-        - username
-        - email
-make a system that lets you change username, looks at node id instead of username
-changing email is not feasible ...
+        - email: changing email will alter up your contribution count.
+            [ since git shortlogs work on emails ]
