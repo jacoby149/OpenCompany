@@ -7,6 +7,7 @@ import app.settings as settings
 import app.github as github
 import app.mongo as db
 import app.rank as rank
+import app.models as models
 
 app = FastAPI()
 app.add_middleware(
@@ -56,9 +57,14 @@ def iget_user(gh_data):
     del user['_id']
     return user
 
+# checks if a mentor is a valid mentor, and returns the mentor if it is.
 @app.post('/mentor_candidate')
-def get_mentor_candidate(token:str,username:str):
-    return github.get_mentor_candidate(token,username)
+def get_mentor_candidate(form:models.MentorForm):
+    api_tok = form.token
+    user = jwt.decode(api_tok)
+    gh_tok = user["token"]
+    print(gh_tok)
+    #return github.get_mentor_candidate(gh_tok,form.username)
 
 if __name__ == '__main__':
     uvicorn.run(app, host='127.0.0.1', port=8000)
