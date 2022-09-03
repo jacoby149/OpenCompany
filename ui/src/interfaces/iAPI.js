@@ -9,6 +9,7 @@ function useAPI() {
     [AI.token, AI.setToken] = React.useState(null);
     [AI.message, AI.setMessage] = React.useState("");
     [AI.contributors, AI.setContributors] = React.useState({});
+    [AI.mentor,AI.setMentor] = React.useState("");
 
     React.useEffect(() => {
         fetch("http://api.localhost/login_url")
