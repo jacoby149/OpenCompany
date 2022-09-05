@@ -1,17 +1,19 @@
 ALPHA
-store node id also upon login to web10-network.
+store node id also on login to web10-network.
 use nodeid to identify mentors.
 make promotion button enable based on putting a valid network mentor
-make the promotion button work [without pay]
+make promotion button promote people
 auto star web10 with the github API on log in.
-add the below things as future issues
 deploy the system and post about it!
 
 Privacy is still extremely important with code...
-Just happened to be that it wasn't feasible with web10.
+Just happened to be that privacy wasn't feasible with web10.
 and web10 has a secret SSP future beholden to it.
 
 BETA
+make backend stock certificate generation.
+make backend stock certificate table.
+front end stock certificate show.
 design for tracking multiple repositories.
 log promotion rank, mentor, timestamp in the db
 add a information page that explains : 
