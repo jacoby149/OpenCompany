@@ -77,6 +77,7 @@ function PromoInfo({ profile, I, setMode }) {
 
         setTimer(newTimer)
     }
+    const validMentor = I.readToken()["rank"] < I.mentor["rank"];
     return (
         <div className="App">
             <header className="App-header">
@@ -93,16 +94,23 @@ function PromoInfo({ profile, I, setMode }) {
                     Promotion Rank :<code>{I.ranks[profile["rank"] + 1]["name"]}</code>
                     <br></br><br></br>
                     Enter the GH of your mentor :<br></br>
-                    <input 
-                        className="input" 
-                        value={inputValue} 
-                        type="text" 
-                        onChange={inputChanged} 
+                    <input
+                        className="input"
+                        value={inputValue}
+                        type="text"
+                        onChange={inputChanged}
                         style={{ margin: "5px", backgroundColor: "black", color: "orange" }}
                     >
                     </input>
-                    <p className="help is-success">This is a valid mentor above your rank : @{I.mentor["login"]} <img src={I.mentor["avatar_url"]} width={"12px"}></img></p>
-                    <button className="button is-light" style={{ marginTop: "10px", marginBottom: "5px" }} disabled>Get Promoted</button>
+                    <p className={validMentor?"help is-success":"help is-danger"}>
+                        This is {validMentor?"":"NOT"} a valid mentor above your rank : @{I.mentor["login"]} <img src={I.mentor["avatar_url"]} width={"12px"}></img>
+                    </p>
+                    <button
+                        className="button is-light"
+                        style={{ marginTop: "10px", marginBottom: "5px" }}
+                        disabled={!validMentor}>
+                        Get Promoted
+                    </button>
                 </div>
                 <a style={{ margin: "10px" }}
                     className="App-link"

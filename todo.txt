@@ -3,7 +3,7 @@ ALPHA
 9.8.22
 properly validate mentor,
 commit count on multiple repos
-
+log in assumes the github account you want....
 
 9.9.22
 make promotion button enable based on putting a valid network mentor
