@@ -72,6 +72,7 @@ def get_mentor_candidate(mentor_form:models.MentorForm):
         mentor.update({"rank":mentor_record["rank"]})
     return mentor
 
+#TODO
 @app.get('/promote')
 def promote(mentor_form:models.MentorForm):
     print("heehee")

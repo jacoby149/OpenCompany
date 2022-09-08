@@ -1,21 +1,15 @@
 ALPHA
 
-9.8.22
-properly validate mentor,
-commit count on multiple repos
-log in assumes the github account you want....
-
 9.9.22
-make promotion button enable based on putting a valid network mentor
-
-9.12.22
 make promotion button promote people
 
-9.13.22
+9.12.22
 auto star web10 with the github API on log in.
 allow multiple repos for auto starring.
 
-9.14.22
+9.13.22
+commit count on multiple repos
+log in assumes the github account you want....
 deploy the system and post about it!
 
 Privacy is still extremely important with code...
