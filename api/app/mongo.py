@@ -17,9 +17,9 @@ db = client[settings.DB]
 ######### User Data ############
 ################################
 
-def get_user(username):
+def get_user(node_id):
     user_collection = db['users']
-    return user_collection.find_one({"login": username})
+    return user_collection.find_one({"node_id": node_id})
 
 def init_user(gh_data):
     user_data = {"rank":0}

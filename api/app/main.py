@@ -49,22 +49,26 @@ def contribution():
 
 # gets the user, inits then gets user if user doesn't exist 
 def iget_user(gh_data):
-    username = gh_data["login"]
-    user = db.get_user(username)
+    node_id = gh_data["node_id"]
+    login = gh_data["login"]
+    user = db.get_user(node_id)
     if not user:
-        db.init_user({"login":username})
-        user = db.get_user(username)
+        # login is included purely for debugging
+        db.init_user({"node_id":node_id,"login":login})
+        user = db.get_user(node_id)
     del user['_id']
     return user
 
 # checks if a mentor is a valid mentor, and returns the mentor if it is.
-@app.post('/mentor_candidate')
-def get_mentor_candidate(form:models.MentorForm):
-    api_tok = form.token
-    user = jwt.decode(api_tok)
-    gh_tok = user["token"]
-    print(gh_tok)
-    #return github.get_mentor_candidate(gh_tok,form.username)
-
+@app.post('/mentor')
+def get_mentor_candidate(mentor_form:models.MentorForm):
+    mentor = github.get_mentor_candidate(mentor_form.gh_tok, mentor_form.mentor_username)
+    mentor_record = db.get_user(mentor["node_id"])
+    if not mentor_record :
+        mentor.update({"rank":None})
+    else : 
+        mentor.update({"rank":mentor_record["rank"]})
+    return mentor
+    
 if __name__ == '__main__':
     uvicorn.run(app, host='127.0.0.1', port=8000)

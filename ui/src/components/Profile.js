@@ -65,16 +65,14 @@ function UserInfo({ profile, I, setMode }) {
 }
 
 function PromoInfo({ profile, I, setMode }) {
-    const fakeApi = () => console.log('Api is called')
     const [inputValue, setInputValue] = React.useState('')
     const [timer, setTimer] = React.useState(null)
     const inputChanged = e => {
         setInputValue(e.target.value)
-
         clearTimeout(timer)
-
+        const Api = () => I.getMentor(e.target.value);
         const newTimer = setTimeout(() => {
-            fakeApi()
+            Api()
         }, 500)
 
         setTimer(newTimer)
@@ -103,7 +101,7 @@ function PromoInfo({ profile, I, setMode }) {
                         style={{ margin: "5px", backgroundColor: "black", color: "orange" }}
                     >
                     </input>
-                    <p className="help is-success">This is a valid mentor above your rank : @jacoby149 <img src={profile["avatar_url"]} width={"12px"}></img></p>
+                    <p className="help is-success">This is a valid mentor above your rank : @{I.mentor["login"]} <img src={I.mentor["avatar_url"]} width={"12px"}></img></p>
                     <button className="button is-light" style={{ marginTop: "10px", marginBottom: "5px" }} disabled>Get Promoted</button>
                 </div>
                 <a style={{ margin: "10px" }}

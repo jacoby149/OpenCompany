@@ -10,7 +10,11 @@ function useAPI() {
     [AI.token, AI.setToken] = React.useState(null);
     [AI.message, AI.setMessage] = React.useState("");
     [AI.contributors, AI.setContributors] = React.useState({});
-    [AI.mentor,AI.setMentor] = React.useState("");
+    [AI.mentor,AI.setMentor] = React.useState(
+        {
+            "login":"jacoby149",
+            "avatar_url":"https://avatars.githubusercontent.com/u/10715872?v=4"
+        });
 
     React.useEffect(() => {
         fetch("http://api.localhost/login_url")
@@ -59,6 +63,16 @@ function useAPI() {
 
     AI.promoteable = function(email){
         return AI.mergedCommits(email) >= AI.neededCommits()
+    }
+
+    AI.getMentor = function(username){
+        const data = {
+            "mentor_username":username,
+            "gh_tok":AI.readToken()["token"],
+            "my_node_id": AI.readToken()["node_id"]
+        }
+        console.log(data)
+        axios.post("http://api.localhost/mentor",data).then((r)=>AI.setMentor(r.data))
     }
 
     return AI;

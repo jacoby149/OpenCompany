@@ -1,9 +1,21 @@
 ALPHA
-store node id also on login to web10-network.
-use nodeid to identify mentors.
+
+9.8.22
+properly validate mentor,
+commit count on multiple repos
+
+
+9.9.22
 make promotion button enable based on putting a valid network mentor
+
+9.12.22
 make promotion button promote people
+
+9.13.22
 auto star web10 with the github API on log in.
+allow multiple repos for auto starring.
+
+9.14.22
 deploy the system and post about it!
 
 Privacy is still extremely important with code...
@@ -11,14 +23,30 @@ Just happened to be that privacy wasn't feasible with web10.
 and web10 has a secret SSP future beholden to it.
 
 BETA
+
+9.15.22
 make backend stock certificate generation.
+
+9.16.22
 make backend stock certificate table.
+
+9.19.22
 front end stock certificate show.
+
+9.20.22
 design for tracking multiple repositories.
-log promotion rank, mentor, timestamp in the db
+
+9.21.22
 add a information page that explains : 
     promotions,
     disclose, that the system requires you keep the following consistent:
         - email: changing email will alter up your contribution count.
             [ since git shortlogs work on emails ]
 make a config to turn pay on for promotion.
+
+flag that turns on and off certificates
+limit to stock certificates
+design stripe connect sign up for mentors
+check mentors are signed up with stripe connect if payment is enabled.
+make the payment backend that splits the fees accordingly.
+sync db promotion with payments.

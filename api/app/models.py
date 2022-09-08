@@ -2,5 +2,6 @@ from pydantic import BaseModel
 from typing import Optional
 
 class MentorForm(BaseModel):
-    token: str
-    username: str
+    my_node_id: str
+    mentor_username: str
+    gh_tok: str
