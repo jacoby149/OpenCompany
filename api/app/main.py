@@ -65,10 +65,10 @@ def get_mentor_candidate(mentor_form:models.MentorForm):
     mentor = github.get_mentor_candidate(mentor_form.gh_tok, mentor_form.mentor_username)
     mentor_record = db.get_user(mentor["node_id"])
     if not mentor_record :
-        mentor.update({"rank":None})
+        mentor.update({"rank":0})
     else : 
         mentor.update({"rank":mentor_record["rank"]})
     return mentor
-    
+
 if __name__ == '__main__':
     uvicorn.run(app, host='127.0.0.1', port=8000)
