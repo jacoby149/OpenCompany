@@ -63,12 +63,19 @@ def iget_user(gh_data):
 @app.post('/mentor')
 def get_mentor_candidate(mentor_form:models.MentorForm):
     mentor = github.get_mentor_candidate(mentor_form.gh_tok, mentor_form.mentor_username)
+    if "node_id" not in mentor:
+        return {"rank":0}
     mentor_record = db.get_user(mentor["node_id"])
     if not mentor_record :
         mentor.update({"rank":0})
     else : 
         mentor.update({"rank":mentor_record["rank"]})
     return mentor
+
+@app.get('/promote')
+def promote(mentor_form:models.MentorForm):
+    print("heehee")
+    pass
 
 if __name__ == '__main__':
     uvicorn.run(app, host='127.0.0.1', port=8000)
