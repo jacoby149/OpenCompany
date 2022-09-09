@@ -73,10 +73,9 @@ def get_mentor_candidate(mentor_form:models.MentorForm):
     return mentor
 
 #TODO
-@app.get('/promote')
+@app.post('/promote')
 def promote(mentor_form:models.MentorForm):
-    print("heehee")
-    pass
+    return "TODO promote"
 
 if __name__ == '__main__':
     uvicorn.run(app, host='127.0.0.1', port=8000)

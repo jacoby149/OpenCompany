@@ -1,13 +1,13 @@
 ALPHA
 
-9.9.22
-make promotion button promote people
-
 9.12.22
+make promotion button promote people.
+
+9.13.22
 auto star web10 with the github API on log in.
 allow multiple repos for auto starring.
 
-9.13.22
+9.14.22
 commit count on multiple repos
 log in assumes the github account you want....
 deploy the system and post about it!

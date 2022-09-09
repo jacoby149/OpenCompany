@@ -43,12 +43,14 @@ function UserInfo({ profile, I, setMode }) {
                     Merged Commits : {I.mergedCommits(profile["email"])}
                     <br></br>
                     Commits Necessary : {I.neededCommits()}</p>
-                <a
-                    className="App-link"
-                    onClick={() => setMode("promotion")}
-                >
-                    Eligible for Promotion!
-                </a>
+                {I.isPromoteable(profile["email"]) ?
+                    <a
+                        className="App-link"
+                        onClick={() => setMode("promotion")}
+                    >
+                        Eligible for Promotion!
+                    </a> : "Not Eligible For Promotion Yet."
+                }
                 <a
                     href={"https://discord.gg/Dbd4VEDznU"}
                     style={{ margin: "20px" }}
@@ -102,13 +104,15 @@ function PromoInfo({ profile, I, setMode }) {
                         style={{ margin: "5px", backgroundColor: "black", color: "orange" }}
                     >
                     </input>
-                    <p className={validMentor?"help is-success":"help is-danger"}>
-                        This is {validMentor?"":"NOT"} a valid mentor above your rank : @{I.mentor["login"]} <img src={I.mentor["avatar_url"]} width={"12px"}></img>
+                    <p className={validMentor ? "help is-success" : "help is-danger"}>
+                        This is {validMentor ? "" : "NOT"} a valid mentor above your rank : @{I.mentor["login"]} <img src={I.mentor["avatar_url"]} width={"12px"}></img>
                     </p>
                     <button
                         className="button is-light"
                         style={{ marginTop: "10px", marginBottom: "5px" }}
-                        disabled={!validMentor}>
+                        disabled={!validMentor}
+                        onClick={()=>I.promote(I.mentor["login"])}
+                    >
                         Get Promoted
                     </button>
                 </div>
