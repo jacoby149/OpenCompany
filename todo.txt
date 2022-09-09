@@ -1,7 +1,8 @@
 ALPHA
 
 9.12.22
-make promotion button promote people.
+make promotion button promote people. TBD
+backend needs done
 
 9.13.22
 auto star web10 with the github API on log in.
