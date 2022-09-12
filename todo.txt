@@ -1,14 +1,10 @@
 ALPHA
 
 9.13.22
-auto star web10 with the github API on log in.
-allow multiple repos for auto starring.
-environment variables for deployment [url changes]
+add environment variables for backend urls
+add environment variables for frontend urls
 
 9.14.22
-commit count on multiple repos
-star multiple repos
-log in assumes the github account you want....
 deploy the system and post about it!
 
 9.15.22
@@ -47,3 +43,11 @@ something like
  - reduced price for promotions
  - mentoring is a requirement for promotion, so you are getting closer to promotion
  - it is skeevy as a requirement, a little too much. a bonus is much better.
+
+auto star web10 with the github API on log in.
+allow multiple repos for auto starring.
+environment variables for deployment [url changes]
+
+commit count on multiple repos
+star multiple repos
+log in assumes the github account you want....
