@@ -1,37 +1,26 @@
 ALPHA
 
-9.12.22
-make promotion button promote people. TBD
-backend needs done
-
 9.13.22
 auto star web10 with the github API on log in.
 allow multiple repos for auto starring.
+environment variables for deployment [url changes]
 
 9.14.22
 commit count on multiple repos
+star multiple repos
 log in assumes the github account you want....
 deploy the system and post about it!
 
-Privacy is still extremely important with code...
-Just happened to be that privacy wasn't feasible with web10.
-and web10 has a secret SSP future beholden to it.
-
-BETA
-
 9.15.22
-make backend stock certificate generation.
+add stripe business log in
 
 9.16.22
-make backend stock certificate table.
+add stripe payment creation
 
 9.19.22
-front end stock certificate show.
+track the payment from the backend
 
 9.20.22
-design for tracking multiple repositories.
-
-9.21.22
 add a information page that explains : 
     promotions,
     disclose, that the system requires you keep the following consistent:
@@ -39,9 +28,22 @@ add a information page that explains :
             [ since git shortlogs work on emails ]
 make a config to turn pay on for promotion.
 
+
+make backend stock certificate generation.
+make backend stock certificate table.
+front end stock certificate show.
+
+
+
 flag that turns on and off certificates
 limit to stock certificates
 design stripe connect sign up for mentors
 check mentors are signed up with stripe connect if payment is enabled.
 make the payment backend that splits the fees accordingly.
 sync db promotion with payments.
+
+maybe there should be a mentoring reward for promotion.
+something like
+ - reduced price for promotions
+ - mentoring is a requirement for promotion, so you are getting closer to promotion
+ - it is skeevy as a requirement, a little too much. a bonus is much better.

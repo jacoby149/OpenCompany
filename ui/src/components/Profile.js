@@ -49,7 +49,8 @@ function UserInfo({ profile, I, setMode }) {
                         onClick={() => setMode("promotion")}
                     >
                         Eligible for Promotion!
-                    </a> : "Not Eligible For Promotion Yet."
+                    </a> : I.maxRank() ? "Fully Promoted!" : 
+                    "Not Eligible For Promotion Yet."
                 }
                 <a
                     href={"https://discord.gg/Dbd4VEDznU"}

@@ -10,7 +10,7 @@ function useAPI() {
     [AI.token, AI.setToken] = React.useState(null);
     [AI.message, AI.setMessage] = React.useState("");
     [AI.contributors, AI.setContributors] = React.useState({});
-    [AI.mentor,AI.setMentor] = React.useState({});
+    [AI.mentor, AI.setMentor] = React.useState({});
 
     React.useEffect(() => {
         fetch("http://api.localhost/login_url")
@@ -53,31 +53,35 @@ function useAPI() {
         return AI.ranks[AI.readToken()["rank"] + 1]["min_commits"];
     }
 
-    AI.mergedCommits = function (email){
+    AI.mergedCommits = function (email) {
         return email in AI.contributors ? AI.contributors[email] : 0;
     }
 
-    AI.isPromoteable = function(email){
+    AI.isPromoteable = function (email) {
         return AI.mergedCommits(email) >= AI.neededCommits()
     }
 
-    AI.promote = function(username){
+    AI.promote = function (username) {
         const data = {
-            "mentor_username":username,
-            "gh_tok":AI.readToken()["token"],
+            "mentor_node_id": AI.mentor["node_id"],
             "my_node_id": AI.readToken()["node_id"]
         }
-        axios.post("http://api.localhost/promote",data).then((r)=>console.log(r.data))
+        axios.post("http://api.localhost/promote", data).then((r) => window.open("http://ui.localhost"))
     }
 
-    AI.getMentor = function(username){
+    AI.getMentor = function (username) {
         const data = {
-            "mentor_username":username,
-            "gh_tok":AI.readToken()["token"],
+            "mentor_username": username,
+            "gh_tok": AI.readToken()["token"],
             "my_node_id": AI.readToken()["node_id"]
         }
         console.log(data)
-        axios.post("http://api.localhost/mentor",data).then((r)=>AI.setMentor(r.data))
+        axios.post("http://api.localhost/mentor", data).then((r) => AI.setMentor(r.data))
+    }
+
+    //TODO pull it out of AI.ranks
+    AI.maxRank = function () {
+        return AI.readToken()["rank"] >= 5
     }
 
     return AI;

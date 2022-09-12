@@ -2,12 +2,12 @@ import requests
 import app.settings as settings
 import os
 
-if not os.path.exists(f'./app/{settings.REPO}'):
+if not os.path.exists(f'./app/{settings.REPO}.git'):
     os.chdir('./app')
-    os.system(f'git clone --bare https://github.com/{settings.CREATOR}/{settings.REPO}')
-    os.chdir(f'./{settings.REPO}')
+    os.system(f'git clone --bare https://github.com/{settings.CREATOR}/{settings.REPO}.git')
+    os.chdir(f'./{settings.REPO}.git')
 else:
-    os.chdir(f'./app/{settings.REPO}')
+    os.chdir(f'./app/{settings.REPO}.git')
 
 ###############################
 ###### Github API calls #######
@@ -33,9 +33,11 @@ def get_user(gh_token:str):
 
 star = f'https://api.github.com/user/starred/{settings.CREATOR}/{settings.REPO}'
 def star_if_not(token):
-    resp = jwt_get(token,star)
+    print(star)
+    resp = jwt_get(token,star,raw=True)
+    print(resp)
     if 204 != resp.status_code:
-        jwt_put(token,star)
+        print(jwt_put(token,star,raw=True))
 
 # hits our dbs first
 # if the person exists, hit github
@@ -44,17 +46,20 @@ def star_if_not(token):
 def get_mentor_candidate(token,username):
     return jwt_get(token,f'https://api.github.com/users/{username}')
 
-
 ################################################
 ########## Generic Helper Functions ############
 ################################################
 
-def jwt_get(token, url):
+def jwt_get(token, url, raw=False):
     headers={'Authorization': f'token {token}'}
+    if raw:
+        return requests.get(url,headers=headers)
     return requests.get(url,headers=headers).json()
 
-def jwt_put(token, url):
+def jwt_put(token, url, raw=False):
     headers={'Authorization': f'token {token}'}
+    if raw:
+        return requests.put(url,headers=headers)
     return requests.put(url,headers=headers).json()
 
 def get_contributors():
@@ -63,7 +68,6 @@ def get_contributors():
     out = out.replace('\t','\n').split('\n')
     conts = {}
     for i in range(0,len(out)-1,2):
-        print(i)
         n,id = out[i],out[i+1]
         em = id.split('<')[1].split('>')[0]
         conts[em] = int(n)

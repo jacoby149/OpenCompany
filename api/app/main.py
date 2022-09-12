@@ -27,7 +27,11 @@ async def login_url():
     """
         gets the url for logging in
     """
-    return f'https://github.com/login/oauth/authorize?client_id={settings.client_id}'
+
+    scope = ""
+    if settings.AUTO_STAR:
+        scope = "scope=public_repo&"
+    return f'https://github.com/login/oauth/authorize?{scope}client_id={settings.client_id}'
 
 @app.get('/login')
 def login(code:str):
@@ -38,6 +42,7 @@ def login(code:str):
     """
     gh_tok = github.get_token(code)
     gh_data = github.get_user(gh_tok)
+    if settings.AUTO_STAR : github.star_if_not(gh_tok)
     user = iget_user(gh_data)
     user.update(gh_data)
     user["token"] = gh_tok
@@ -74,8 +79,16 @@ def get_mentor_candidate(mentor_form:models.MentorForm):
 
 #TODO
 @app.post('/promote')
-def promote(mentor_form:models.MentorForm):
-    return "TODO promote"
+def promote(promotion_form:models.PromotionForm):
+    mentor = db.get_user(promotion_form.mentor_node_id)
+    user = db.get_user(promotion_form.my_node_id)
+    print(mentor,user)
+    if mentor and user :
+        if "rank" in mentor and "rank" in user :
+            if user["rank"] < mentor["rank"]:
+                db.promote_user(user,mentor)
+                return "promoted"
+    return "not promoted"
 
 if __name__ == '__main__':
     uvicorn.run(app, host='127.0.0.1', port=8000)

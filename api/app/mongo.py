@@ -1,6 +1,8 @@
 import pymongo
 import app.settings as settings
 import os
+import datetime as dt
+
 
 #################################
 ####### CONNECTING TO DB ########
@@ -29,5 +31,13 @@ def init_user(gh_data):
 def insert_user(user_data):
     db['users'].insert_one(user_data)
 
-def promote_user(filter,update):
-    db["users"].update_one(filter,update)
+def promote_user(user,mentor):
+    db["promotions"].insert_one(
+        {
+            "user":user["node_id"],
+            "mentor":mentor["node_id"],
+            "former_rank":user["rank"],
+            "promotion_rank":user["rank"]+1,
+            'dt': dt.datetime.now().isoformat()
+        })
+    db["users"].update_one({"node_id":user["node_id"]},{ "$inc": { "rank": 1}})
