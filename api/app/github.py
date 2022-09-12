@@ -33,11 +33,9 @@ def get_user(gh_token:str):
 
 star = f'https://api.github.com/user/starred/{settings.CREATOR}/{settings.REPO}'
 def star_if_not(token):
-    print(star)
     resp = jwt_get(token,star,raw=True)
-    print(resp)
     if 204 != resp.status_code:
-        print(jwt_put(token,star,raw=True))
+        jwt_put(token,star,raw=True)
 
 # hits our dbs first
 # if the person exists, hit github

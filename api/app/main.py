@@ -82,7 +82,6 @@ def get_mentor_candidate(mentor_form:models.MentorForm):
 def promote(promotion_form:models.PromotionForm):
     mentor = db.get_user(promotion_form.mentor_node_id)
     user = db.get_user(promotion_form.my_node_id)
-    print(mentor,user)
     if mentor and user :
         if "rank" in mentor and "rank" in user :
             if user["rank"] < mentor["rank"]:
