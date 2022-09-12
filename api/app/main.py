@@ -2,6 +2,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 import uvicorn
 import jwt
+from fastapi_utils.tasks import repeat_every
 
 import app.settings as settings
 import app.github as github
@@ -17,6 +18,12 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+
+@app.on_event("startup")
+@repeat_every(seconds=30)  # 1 hour
+def refetch() -> None:
+    github.fetch()
 
 @app.get('/ranks')
 async def get_ranks():

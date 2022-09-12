@@ -60,8 +60,10 @@ def jwt_put(token, url, raw=False):
         return requests.put(url,headers=headers)
     return requests.put(url,headers=headers).json()
 
+def fetch():
+    os.popen('git fetch --all')
+
 def get_contributors():
-    os.system('git fetch --all')
     out = os.popen('git shortlog -sn --group=author --group=trailer:co-authored-by --all -e').read()
     out = out.replace('\t','\n').split('\n')
     conts = {}
