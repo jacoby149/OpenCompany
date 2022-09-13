@@ -1,26 +1,22 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: api
+  name: network-api
 spec:
   selector:
     matchLabels:
-      app: api
+      app: network-api
   template:
     metadata:
       labels:
-        app: api
+        app: network-api
     spec:
       containers:
-        - name: api
-          image: gcr.io/pure-phalanx-344719/api
+        - name: network-api
+          image: gcr.io/pure-phalanx-344719/network-api
           ports:
             - containerPort: 80
           env:
-            - name: PROVIDER
-              value: "api.web10.app"
-            - name: DB
-              value: "deploy"
             - name: STRIPE_STATUS
               value: "live"
           resources:

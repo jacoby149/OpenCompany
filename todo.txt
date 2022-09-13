@@ -1,9 +1,5 @@
 ALPHA
 
-9.13.22
-add environment variables for backend urls
-add environment variables for frontend urls
-
 9.14.22
 deploy the system and post about it!
 
