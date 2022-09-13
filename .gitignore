@@ -13,3 +13,4 @@ api/app/__pycache__/rank.cpython-39.pyc
 api/app/web10.git
 ui/src/config.js
 skaffold/run
+skaffold/dev
