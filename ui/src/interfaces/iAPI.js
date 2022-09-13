@@ -2,8 +2,9 @@ import React from 'react';
 import { useSearchParams } from 'react-router-dom';
 import axios from 'axios'
 
-function useAPI() {
+function useAPI(APIURL) {
     const AI = {};
+    console.log(APIURL);
     [AI.searchParams, AI.setSearchParams] = useSearchParams();
     [AI.loginURL, AI.setLoginURL] = React.useState(null);
     [AI.ranks, AI.setRanks] = React.useState(null);
@@ -13,13 +14,13 @@ function useAPI() {
     [AI.mentor, AI.setMentor] = React.useState({});
 
     React.useEffect(() => {
-        fetch("http://api.localhost/login_url")
+        fetch(`${APIURL}/login_url`)
             .then((r) => r.json().then(AI.setLoginURL)
             );
-        fetch("http://api.localhost/ranks")
+        fetch(`${APIURL}/ranks`)
             .then((r) => r.json().then(AI.setRanks)
             );
-        fetch("http://api.localhost/contributors")
+        fetch(`${APIURL}/contributors`)
             .then((r) => r.json().then(AI.setContributors)
             );
     }, []);
@@ -28,7 +29,7 @@ function useAPI() {
         const code = AI.searchParams.get("code")
         if (code) {
             AI.setMessage("logging in ...")
-            fetch(`http://api.localhost/login?code=${code}`)
+            fetch(`${APIURL}/login?code=${code}`)
                 .then((r) => {
                     r.json().then((t) => {
                         AI.setToken(t);
@@ -66,7 +67,7 @@ function useAPI() {
             "mentor_node_id": AI.mentor["node_id"],
             "my_node_id": AI.readToken()["node_id"]
         }
-        axios.post("http://api.localhost/promote", data).then((r) => window.open("http://ui.localhost"))
+        axios.post(`${APIURL}/promote`, data).then((r) => window.open("/"))
     }
 
     AI.getMentor = function (username) {
@@ -76,7 +77,7 @@ function useAPI() {
             "my_node_id": AI.readToken()["node_id"]
         }
         console.log(data)
-        axios.post("http://api.localhost/mentor", data).then((r) => AI.setMentor(r.data))
+        axios.post(`${APIURL}/mentor`, data).then((r) => AI.setMentor(r.data))
     }
 
     //TODO pull it out of AI.ranks
