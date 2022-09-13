@@ -1,15 +1,12 @@
-ALPHA
+BETA
 
 9.13.22
 add starring requirement front end failure.
 enforce starring requirement for login via. the backend.
+
+9.14
 add a starring iframe for starring.
 add ui element that shows web10 stars and forks.
-
-
-9.14.22
-hook up cloudflare 
-post about it
 
 9.15.22
 add stripe business log in
@@ -28,6 +25,11 @@ add a information page that explains :
             [ since git shortlogs work on emails ]
 make a config to turn pay on for promotion.
 
+9.21.22
+hook up cloudflare 
+post about it
+
+ALPHA
 
 make backend stock certificate generation.
 make backend stock certificate table.
