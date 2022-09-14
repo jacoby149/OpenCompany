@@ -4,32 +4,31 @@ import axios from 'axios'
 
 function useAPI(APIURL) {
     const AI = {};
-    console.log(APIURL);
     [AI.searchParams, AI.setSearchParams] = useSearchParams();
     [AI.loginURL, AI.setLoginURL] = React.useState(null);
     [AI.ranks, AI.setRanks] = React.useState(null);
     [AI.token, AI.setToken] = React.useState(null);
-    [AI.message, AI.setMessage] = React.useState("");
+    [AI.message, AI.setMessage] = React.useState({text:"",color:"success"});
     [AI.contributors, AI.setContributors] = React.useState({});
     [AI.mentor, AI.setMentor] = React.useState({});
 
     React.useEffect(() => {
-        fetch(`${APIURL}/login_url`)
-            .then((r) => r.json().then(AI.setLoginURL)
+        axios.get(`${APIURL}/login_url`)
+            .then((r) => {AI.setLoginURL(r.data)}
             );
-        fetch(`${APIURL}/ranks`)
-            .then((r) => r.json().then(AI.setRanks)
+        axios.get(`${APIURL}/ranks`)
+            .then((r) => AI.setRanks(r.data)
             );
-        fetch(`${APIURL}/contributors`)
-            .then((r) => r.json().then(AI.setContributors)
+        axios.get(`${APIURL}/contributors`)
+            .then((r) => AI.setContributors(r.data)
             );
-    }, []);
+    }, [AI.token]);
 
     AI.tryLogin = function () {
         const code = AI.searchParams.get("code")
         if (code) {
-            AI.setMessage("logging in ...")
-            fetch(`${APIURL}/login?code=${code}`)
+            AI.setMessage({text:"logging in ...",color:"success"})
+            axios.get(`${APIURL}/login?code=${code}`)
                 .then((r) => {
                     r.json().then((t) => {
                         AI.setToken(t);
@@ -37,6 +36,8 @@ function useAPI(APIURL) {
                         AI.searchParams.delete("code")
                         AI.setSearchParams(AI.searchParams)
                     });
+                }).catch((r)=>{
+                    AI.setMessage({text:r.response.data.detail,color:"danger"})
                 })
         }
     }

@@ -1,7 +1,7 @@
 from fastapi import HTTPException, status
-
-# LOGIN = HTTPException(
-#     status_code=status.HTTP_401_UNAUTHORIZED,
-#     detail="incorrect username or password",
-#     headers={"WWW-Authenticate": "Basic"},
-# )
+import app.settings as settings
+NOT_STARRED = HTTPException(
+    status_code=status.HTTP_401_UNAUTHORIZED,
+    detail=f"in order to login, you must star {settings.CREATOR}/{settings.REPO}",
+    headers={"WWW-Authenticate": "Basic"},
+)

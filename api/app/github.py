@@ -32,6 +32,10 @@ def get_user(gh_token:str):
 
 
 star = f'https://api.github.com/user/starred/{settings.CREATOR}/{settings.REPO}'
+def is_starred(token):
+    resp = jwt_get(token,star,raw=True)
+    return 204 == resp.status_code
+    
 def star_if_not(token):
     resp = jwt_get(token,star,raw=True)
     if 204 != resp.status_code:

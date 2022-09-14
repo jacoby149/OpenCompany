@@ -18,7 +18,7 @@ function App() {
   },
     [])
   return (
-    AI.readToken() ?
+    AI.token && AI.readToken() ?
       <Profile profile={AI.readToken()} I={AI} />
       : <Login I={AI} />
 

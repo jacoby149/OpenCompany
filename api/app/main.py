@@ -9,6 +9,7 @@ import app.github as github
 import app.mongo as db
 import app.rank as rank
 import app.models as models
+import app.exceptions as exceptions
 
 app = FastAPI()
 app.add_middleware(
@@ -50,6 +51,9 @@ def login(code:str):
     gh_tok = github.get_token(code)
     gh_data = github.get_user(gh_tok)
     if settings.AUTO_STAR : github.star_if_not(gh_tok)
+    else : 
+        if not github.is_starred(gh_tok):
+            raise exceptions.NOT_STARRED
     user = iget_user(gh_data)
     user.update(gh_data)
     user["token"] = gh_tok

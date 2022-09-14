@@ -21,7 +21,7 @@ function Login({ I }) {
                 >
                     Log in
                 </a>
-                <p className="help is-success">{I.message}</p>
+                <p className={`help is-${I.message["color"]}`}>{I.message["text"]}</p>
 
             </header>
         </div>
