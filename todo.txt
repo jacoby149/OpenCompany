@@ -1,11 +1,5 @@
 BETA
 
-9.14.22
-add starring requirement front end failure.
-enforce starring requirement for login via. the backend.
-add a starring iframe for starring.
-add ui element that shows web10 stars and forks.
-
 9.15.22
 add stripe business log in
 

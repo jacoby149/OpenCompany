@@ -30,14 +30,17 @@ function useAPI(APIURL) {
             AI.setMessage({text:"logging in ...",color:"success"})
             axios.get(`${APIURL}/login?code=${code}`)
                 .then((r) => {
-                    r.json().then((t) => {
-                        AI.setToken(t);
+                        AI.setToken(r.data);
                         AI.setMessage("")
                         AI.searchParams.delete("code")
                         AI.setSearchParams(AI.searchParams)
-                    });
                 }).catch((r)=>{
-                    AI.setMessage({text:r.response.data.detail,color:"danger"})
+                    console.log(r)
+                    AI.setMessage(
+                        {
+                            text:"In order to log in, you must star",
+                            color:"danger",
+                            star:r.response.data.detail})
                 })
         }
     }

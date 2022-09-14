@@ -21,7 +21,18 @@ function Login({ I }) {
                 >
                     Log in
                 </a>
-                <p className={`help is-${I.message["color"]}`}>{I.message["text"]}</p>
+                <p className={`help is-${I.message["color"]}`}>{ I.message["text"] }<br></br>
+                    {"star" in I.message ?
+                        <u><a 
+                            style={{color:"orange"}} 
+                            href={`https://github.com/${I.message["star"]}`}
+                            target="_blank"
+                            >
+                            {I.message["star"]}
+                        </a></u> :
+                        ""
+                    }
+                </p>
 
             </header>
         </div>
