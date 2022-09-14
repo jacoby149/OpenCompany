@@ -1,5 +1,7 @@
 BETA
 
+maybe i ought to figure out reverse proxies
+
 9.15.22
 add stripe business log in
 
