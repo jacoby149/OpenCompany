@@ -15,7 +15,9 @@ services:
         aliases:
           - api.localhost
   ui:
-    build: ui
+    build:
+      context: ./ui
+      target: ui-dev
     volumes:
       - ./ui:/ui
       - ui-node-modules:/ui/node_modules

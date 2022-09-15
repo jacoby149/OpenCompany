@@ -17,8 +17,8 @@ else:
 def get_token(code):
     url = 'https://github.com/login/oauth/access_token'
     myobj = {
-        'client_id': settings.client_id,
-        'client_secret': settings.client_secret,
+        'client_id': settings.CLIENT_ID,
+        'client_secret': settings.CLIENT_SECRET,
         'code' : code,
         'redirect_uri' : 'http://ui.localhost/'
     }

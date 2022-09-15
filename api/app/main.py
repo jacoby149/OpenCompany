@@ -39,7 +39,7 @@ async def login_url():
     scope = ""
     if settings.AUTO_STAR:
         scope = "scope=public_repo&"
-    return f'https://github.com/login/oauth/authorize?{scope}client_id={settings.client_id}'
+    return f'https://github.com/login/oauth/authorize?{scope}client_id={settings.CLIENT_ID}'
 
 @app.get('/login')
 def login(code:str):
