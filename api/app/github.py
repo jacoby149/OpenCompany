@@ -20,7 +20,7 @@ def get_token(code):
         'client_id': settings.CLIENT_ID,
         'client_secret': settings.CLIENT_SECRET,
         'code' : code,
-        'redirect_uri' : 'http://ui.localhost/'
+        'redirect_uri' : settings.REDIRECT_URI
     }
     gh_tok = requests.post(url, json = myobj)
     gh_tok = (gh_tok.text.split('&')[0].split('=')[1])
