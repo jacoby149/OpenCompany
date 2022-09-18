@@ -1,27 +1,18 @@
 BETA
-
-maybe i ought to figure out reverse proxies
-
-9.15.22
-add stripe business log in
-
-9.16.22
-add stripe payment creation
-
+suspending work on web10 network until web10 frontend is properly refactored
 9.19.22
-track the payment from the backend
-
+add stripe business log in
 9.20.22
+add stripe payment creation
+9.21.22
+track the payment from the backend
+9.22.22
 add a information page that explains : 
     promotions,
     disclose, that the system requires you keep the following consistent:
         - email: changing email will alter up your contribution count.
             [ since git shortlogs work on emails ]
 make a config to turn pay on for promotion.
-
-9.21.22
-hook up cloudflare 
-post about it
 
 ALPHA
 
@@ -51,3 +42,4 @@ environment variables for deployment [url changes]
 commit count on multiple repos
 star multiple repos
 log in assumes the github account you want....
+use reverse proxies to have 1 service / ingress instead of 10.
