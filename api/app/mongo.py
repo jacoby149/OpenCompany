@@ -40,4 +40,4 @@ def promote_user(user,mentor):
             "promotion_rank":user["rank"]+1,
             "dt": dt.datetime.now().isoformat()
         })
-    db["users"].update_one({"node_id":user["node_id"]},{ "$inc": { "rank": 1}})
+    db["users"].update_one({"node_id":user["node_id"]},{ "rank":user["rank"]+1})
