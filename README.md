@@ -56,7 +56,7 @@ The Stock serves as :
 
 **Mentor Rewards / Payment** : majority of certification fees [ 55% - 85% based on rank] goes back to pay the mentors/teachers. 
 
-The rest [ 15% - 45% ] goes back to a Delaware C. Corp of choice.
+The rest goes back to the configured Delaware C. Corp.
 
 [Totally Configurable!!!]
 
