@@ -12,6 +12,7 @@ ranks = [
         "price":100,
         "min_commits":0,
         "mentor_profit_share":.50,
+        "stocks":100
     },
     {
         "name":"intern",
@@ -21,6 +22,7 @@ ranks = [
         "price":400,
         "min_commits":5,
         "mentor_profit_share":.55,
+        "stocks":200
     },
     {
         "name":"software engineer",
@@ -30,6 +32,7 @@ ranks = [
         "price":1400,
         "min_commits":10,
         "mentor_profit_share":.60,
+        "stocks":400
     },
     {
         "name":"software engineer II",
@@ -39,6 +42,7 @@ ranks = [
         "price":1900,
         "min_commits":20,
         "mentor_profit_share":.70,
+        "stocks":800
     },
     {
         "name":"core contributor",
@@ -48,6 +52,7 @@ ranks = [
         "price":2900,
         "min_commits":50,
         "mentor_profit_share":.85,
+         "stocks":1600
     },
     {   
         "name":"maximum-rank-achieved",
