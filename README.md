@@ -5,7 +5,9 @@ A convection oven for aspiring code monsters 😎💯👨‍💻
 
 ## What is OpenCompany?
 
-A system to incentivize building practical experience after CS school / boot camp.
+A system to build practical experience after Computer Science school / boot camp.
+
+A system that companies can attach to their open source repos to issue stock and compensation to developers and mentors.
 
 It is a community of people developing software for Company Stock. 
 
@@ -15,9 +17,13 @@ It is a community of mentors teaching students with merit based certifications.
 
 ## Why? 
 
-There is a missing piece between School / Bootcamp and landing the first paid internship.
+There is a missing gap between Computer Science School / Bootcamp and landing the first paid internship.
 
-A karate dojo of code, with people of higher ranks mentoring the lower ranks.
+OpenCompany is a system that allows people to contribute to open source projects for stock compensation, and build their resumes.
+
+
+
+Open Company creates a metaphorical karate dojo of code, with people of higher ranks mentoring the lower ranks.
 
 Build practical coding experience with a mentor.
 
