@@ -5,7 +5,7 @@ A convection oven for aspiring code monsters 😎💯👨‍💻
 
 ## What is OpenCompany?
 
-A social education system + incentive system 
+A system to incentivize building practical experience after CS school / boot camp.
 
 It is a community of people developing software for Company Stock. 
 
@@ -15,13 +15,15 @@ It is a community of mentors teaching students with merit based certifications.
 
 ## Why? 
 
-There is a missing piece between Bootcamp and landing the first paid internship.
+There is a missing piece between School / Bootcamp and landing the first paid internship.
 
 A karate dojo of code, with people of higher ranks mentoring the lower ranks.
 
+Build practical coding experience with a mentor.
+
 Hit successfully merged commit count milestones in order to rise in the ranks.
 
-When achieving milestones, you must pay mentors and the Open Source Company in order to be promoted, similar to karate dojo belt test fees.
+When achieving milestones, you pay mentors + the Open Source Company for promotion, similar to the black belt test fee in a karate dojo.
 
 On promotion, you receive stock options of said Open Source Company
 
@@ -33,12 +35,12 @@ On promotion, you receive stock options of said Open Source Company
 
 The fee serves as :
 
-- some skin in the game to keep people motivated
-- a payment to appreciate their mentors/teachers worth.
+- a payment for mentees to appreciate the work of mentors/teachers.
+- compensation to the company for the creation of a practical learning opportunity with a mentor.
 
 The Stock serves as :
 
-* An incentive, if the company blows up you own a part of it for developing code for the Open Source Company.
+* An incentive to the mentees and mentors to develop code and mentor for the Open Source Company.
 
 
 
