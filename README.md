@@ -27,6 +27,8 @@ On promotion, you receive stock options of said Open Source Company
 
 [Totally Configurable !!]
 
+[ SEE api\app\rank.py ] 
+
 
 
 The fee serves as :
@@ -49,6 +51,8 @@ The Stock serves as :
 The rest [ 15% - 45% ] goes back to a Delaware C. Corp of choice.
 
 [Totally Configurable!!!]
+
+[ SEE api\app\rank.py ] 
 
 
 
