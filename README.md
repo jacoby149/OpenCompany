@@ -29,8 +29,6 @@ On promotion, you receive stock options of said Open Source Company
 
 
 
-## But Why????
-
 The fee serves as :
 
 - some skin in the game to keep people motivated
