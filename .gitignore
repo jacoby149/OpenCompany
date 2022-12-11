@@ -11,6 +11,7 @@ api/app/__pycache__/models.cpython-39.pyc
 api/app/__pycache__/mongo.cpython-39.pyc
 api/app/__pycache__/rank.cpython-39.pyc
 api/app/web10.git
+api/app/tracked_repos
 ui/src/config.js
 skaffold/run
 skaffold/dev
