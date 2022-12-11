@@ -66,7 +66,6 @@ def jwt_put(token, url, raw=False):
 
 def fetch():
     os.popen('git fetch --all')
-    get_contributors()
 
 def get_contributors():
     out = os.popen('git shortlog -sn --group=author --group=trailer:co-authored-by --all -e').read()
