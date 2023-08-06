@@ -2,12 +2,12 @@ import requests
 import app.settings as settings
 import os
 
-if not os.path.exists(f'./app/{settings.REPO}.git'):
-    os.chdir('./app')
+if not os.path.exists(f'./app/tracked_repos/{settings.REPO}.git'):
+    os.chdir('./app/tracked_repos')
     os.system(f'git clone --bare https://github.com/{settings.CREATOR}/{settings.REPO}.git')
-    os.chdir(f'./{settings.REPO}.git')
+    os.chdir(f'./tracked_repos/{settings.REPO}.git')
 else:
-    os.chdir(f'./app/{settings.REPO}.git')
+    os.chdir(f'./app/tracked_repos/{settings.REPO}.git')
 
 ###############################
 ###### Github API calls #######
