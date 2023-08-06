@@ -42,7 +42,7 @@ async def login_url():
     return f'https://github.com/login/oauth/authorize?{scope}client_id={settings.CLIENT_ID}&login='
 
 @app.get('/login')
-def login(code:str):
+async def login(code:str):
     """
         get the github token,
         then get the db information
@@ -60,11 +60,11 @@ def login(code:str):
     return jwt.encode(user,settings.PRIVATE_KEY, algorithm=settings.ALGORITHM)
 
 @app.get('/contributors')
-def contribution():
+async def contribution():
     return github.get_contributors()
 
 # gets the user, inits then gets user if user doesn't exist 
-def iget_user(gh_data):
+async def iget_user(gh_data):
     node_id = gh_data["node_id"]
     login = gh_data["login"]
     user = db.get_user(node_id)
@@ -77,7 +77,7 @@ def iget_user(gh_data):
 
 # checks if a mentor is a valid mentor, and returns the mentor if it is.
 @app.post('/mentor')
-def get_mentor_candidate(mentor_form:models.MentorForm):
+async def get_mentor_candidate(mentor_form:models.MentorForm):
     mentor = github.get_mentor_candidate(mentor_form.gh_tok, mentor_form.mentor_username)
     if "node_id" not in mentor:
         return {"rank":0}
@@ -88,16 +88,21 @@ def get_mentor_candidate(mentor_form:models.MentorForm):
         mentor.update({"rank":mentor_record["rank"]})
     return mentor
 
-#TODO
+import threading 
+promotion_lock = threading.Lock()
+
 @app.post('/promote')
 def promote(promotion_form:models.PromotionForm):
+    promotion_lock.acquire()
     mentor = db.get_user(promotion_form.mentor_node_id)
     user = db.get_user(promotion_form.my_node_id)
     if mentor and user :
         if "rank" in mentor and "rank" in user :
             if user["rank"] < mentor["rank"]:
                 db.promote_user(user,mentor)
+                promotion_lock.release()
                 return "promoted"
+    promotion_lock.release()
     return "not promoted"
 
 if __name__ == '__main__':
